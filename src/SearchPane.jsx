@@ -28,21 +28,26 @@ import {
 const recipes = require("./recipes.json");
 const SearchPane = () => {
   return (
-    <Center flex={1} h={"100vh"} bg={Colors.Green}>
-      <Card p={10} maxW={"70vw"}>
-        <VStack w={"full"} spacing={4}>
-          <Heading size={"lg"}>What ingredients do you have on hand?</Heading>
-          <Input />
-        </VStack>
-      </Card>
+    <Center flex={1} h={"100vh"} bg={"gray.50"}>
+      <RecipeChoicePane />
     </Center>
+  );
+};
+const IngredientsPane = () => {
+  return (
+    <Card p={10} maxW={"70vw"}>
+      <VStack w={"full"} spacing={4}>
+        <Heading size={"lg"}>What ingredients do you have on hand?</Heading>
+        <Input />
+      </VStack>
+    </Card>
   );
 };
 
 const RecipeChoicePane = () => {
   const rs = recipes.recipes.splice(20, 100);
   return (
-    <VStack flex={1} maxW={"50vw"} alignSelf={"center"}>
+    <VStack flex={1} maxW={"65vw"} alignSelf={"center"}>
       <Recipe recipe={rs[2]} />
       <HStack w={"full"}>
         <TouchButton icon={IoIosRefresh} color={"yellow"} />
@@ -95,7 +100,7 @@ const TouchButton = ({ icon, color }) => {
       style={{ aspectRatio: 1 }}
       variant={"solid"}
       bg={"white"}
-      borderRadius={"full"}
+      borderRadius={"0px"}
       shadow={"lg"}
       icon={<Icon as={icon} color={color && color + ".400"} boxSize={"20px"} />}
     />
